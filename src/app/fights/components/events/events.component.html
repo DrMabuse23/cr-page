@@ -1,0 +1,36 @@
+<mat-toolbar color="primary">
+  <span>Events Stuttgart #8CVPP8</span>
+</mat-toolbar>
+<div class="example-container mat-elevation-z8" *ngIf="dataSource">
+  <div class="actions-header">
+    <button mat-mini-fab color="primary" [routerLink]="['/event', 'add']">
+      <mat-icon aria-label="Add a event">add</mat-icon>
+    </button>
+  </div>
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name. </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <a mat-button color="primary" [href]="element.profileLink" target="_blank">{{element.name}}</a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="from">
+      <mat-header-cell *matHeaderCellDef> Start </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.from}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="to">
+      <mat-header-cell *matHeaderCellDef> End </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.to}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="action-row">
+        <button mat-icon-button color="accent" [routerLink]="['/event', 'view', element.id]">
+          <mat-icon aria-label="Detail">visibility</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

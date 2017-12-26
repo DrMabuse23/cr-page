@@ -2,6 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.0-rc.0.
 
+create a core.ts in environment with 
+
+````
+export const core = {
+  crApi: '',
+  firebaseConfig: {
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',  
+    messagingSenderId: ''
+  }
+};
+`````
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

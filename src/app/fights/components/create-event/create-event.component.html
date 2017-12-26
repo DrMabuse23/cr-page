@@ -1,0 +1,33 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>
+      Create Event
+    </mat-card-title>
+    <form [formGroup]="form" (submit)="submit()">
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" formControlName="from" placeholder="Start">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker2" formControlName="to" placeholder="End">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </form>
+    <!-- //  -->
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="form.reset()">Reset</button>
+      <button mat-raised-button color="primary" (click)="submit()" type="submit" [disabled]="!form.valid">Submit</button>
+    </mat-card-actions>
+    <!-- {{form.value|json}}
+    {{form.errors|json}}
+    {{form.valid}} -->
+  </mat-card-content>
+</mat-card>
