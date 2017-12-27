@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'clan',
+    loadChildren: 'app/clan/clan.module#ClanModule',
+  },
+  {
     path: 'member',
     loadChildren: 'app/member/member.module#MemberModule',
   },
@@ -13,9 +17,9 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/member'
+    redirectTo: '/clan'
   },
-  { path: '**', redirectTo: '/member' }
+  { path: '**', redirectTo: '/clan' }
 ];
 
 @NgModule({

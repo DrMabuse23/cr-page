@@ -1,0 +1,58 @@
+<mat-toolbar color="primary" *ngIf="clan">
+  <img class="clanlogo" [src]="clan.badge.image" />
+  <span>{{clan.name}}</span>
+</mat-toolbar>
+<div fxLayout='column' class="zero" fxLayoutGap="10px">
+    <mat-card *ngIf="clan">
+        <mat-card-content>
+          <mat-card-title>
+            {{clan.name}}
+          </mat-card-title>
+          <p>
+            {{clan.description}}
+          </p>
+          <!-- <pre>{{clan|json}}</pre> -->
+        </mat-card-content>
+      </mat-card>
+  <div fxFlex="33" fxLayout="row" fxLayout.xs="column" fxLayout.md="row" class="two" fxLayoutGap="10px">
+      <div fxFlex="100" fxFlex.md="65" class="two_two">
+      <mat-card *ngIf="clan">
+        <mat-card-content>
+          <mat-card-title>
+            <div fxFlex="22" fxFlex.md="65" fxHide.lg class="two_one">{{clan.score}}</div>
+            <img src="assets/ui/symbols/trophy-ribbon.png" class="icon-card" fxHide.xs />
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{'SCORE'}}
+          </mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.md="65" class="two_two">
+      <mat-card *ngIf="clan">
+        <mat-card-content>
+            <mat-card-title>
+              <div fxFlex="22" fxFlex.md="65" fxHide.lg class="two_one">{{clan.requiredScore}}</div>
+              <img src="assets/ui/symbols/trophy.png" class="icon-card" fxHide.xs />
+            </mat-card-title>
+          <mat-card-subtitle>
+            {{'REQUIREDSCORE'}}
+          </mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.md="65" class="two_two">
+        <mat-card *ngIf="clan">
+          <mat-card-content>
+              <mat-card-title fxFlexAlign="center">
+                <div fxFlex="22" fxFlex.md="65" fxHide.lg class="two_one">{{clan.donations}}</div>
+                <img src="assets/ui/symbols/cards.png" class="icon-card" fxHide.xs />
+              </mat-card-title>
+            <mat-card-subtitle>
+              {{'DONATIONS'}}
+            </mat-card-subtitle>
+          </mat-card-content>
+        </mat-card>
+      </div>
+  </div>
+</div>

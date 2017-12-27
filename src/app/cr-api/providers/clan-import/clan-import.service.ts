@@ -14,13 +14,13 @@ export class ClanImportService extends CrApiBase {
   }
 
   get url() {
-    return `${this.baseUrl}/${this.clanId}`;
+    return `${this.baseUrl}/clan/${this.clanId}`;
   }
 
   import(): Observable<Clan> {
-    if (!environment.production) {
-      return Observable.of(testJSON);
-    }
+    // if (!environment.production) {
+    //   return Observable.of(testJSON);
+    // }
     return <Observable<Clan>>this.httpClient.get(this.url);
   }
 }

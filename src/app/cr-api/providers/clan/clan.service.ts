@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -42,11 +42,23 @@ export class ClanService extends CrApiBase {
 
   get clan() {
     return this.clanCollection.valueChanges()
+      .concatMap((clan) => {
+        // debugger;
+        if (clan.length === 0) {
+          return this.import(true)
+            .map(() => {
+              console.log(clan);
+              return clan[0];
+            });
+        }
+        return Observable.of(clan[0]);
+      })
       .catch((err) => {
         console.log(err);
-        return this.import();
+        return this.import(true);
       });
   }
+
   public addMember(item: Member) {
     if (!item.id) {
       item.id = this.afs.createId();
@@ -58,21 +70,32 @@ export class ClanService extends CrApiBase {
     if (!item.id) {
       item.id = this.afs.createId();
     }
+    console.log(item);
     return Observable.fromPromise(this.clanCollection.add(item));
   }
 
-  import() {
+  import(onlyClan = false) {
     return this.clanImportService.import()
-      .concatMap((collection) => {
+      .filter((res) => !res.error)
+      .concatMap((collection: any) => {
         const copy = JSON.parse(JSON.stringify(collection));
         delete copy.members;
-        return this.addClan(copy)
-          .concatMap(() => Observable.from(collection.members))
-          .concatMap((member) => {
-            return this.addMember(member);
-          })
-          .last()
-          .map(() => collection);
+        if (onlyClan) {
+          return this.addClan(copy)
+            .map(() => collection);
+        } else {
+          return this.addClan(copy)
+            .concatMap(() => Observable.from(collection.members))
+            .concatMap((member) => {
+              return this.addMember(<Member>member);
+            })
+            .last()
+            .map(() => collection);
+        }
       });
+  }
+
+  updateClan() {
+    // this.update
   }
 }

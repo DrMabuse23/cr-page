@@ -53,4 +53,5 @@ export interface Clan {
   badge: Badge;
   location: Location;
   members?: Member[];
+  error?: boolean;
 }
