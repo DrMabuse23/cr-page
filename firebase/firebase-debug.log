@@ -1,114 +1,99 @@
-[debug] [2017-12-22T00:09:45.453Z] ----------------------------------------------------------------------
-[debug] [2017-12-22T00:09:45.455Z] Command:       /usr/local/Cellar/node/8.9.0/bin/node /usr/local/bin/firebase init
-[debug] [2017-12-22T00:09:45.455Z] CLI Version:   3.16.0
-[debug] [2017-12-22T00:09:45.455Z] Platform:      darwin
-[debug] [2017-12-22T00:09:45.455Z] Node Version:  v8.9.0
-[debug] [2017-12-22T00:09:45.456Z] Time:          Fri Dec 22 2017 01:09:45 GMT+0100 (CET)
-[debug] [2017-12-22T00:09:45.456Z] ----------------------------------------------------------------------
+[debug] [2017-12-28T13:49:40.384Z] ----------------------------------------------------------------------
+[debug] [2017-12-28T13:49:40.386Z] Command:       /usr/local/Cellar/node/8.9.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2017-12-28T13:49:40.386Z] CLI Version:   3.16.0
+[debug] [2017-12-28T13:49:40.386Z] Platform:      darwin
+[debug] [2017-12-28T13:49:40.386Z] Node Version:  v8.9.0
+[debug] [2017-12-28T13:49:40.387Z] Time:          Thu Dec 28 2017 14:49:40 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:40.387Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2017-12-22T00:09:45.468Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
-[debug] [2017-12-22T00:09:45.468Z] > authorizing via signed-in user
-[info] 
-     🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥     🔥🔥🔥     🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
-     🔥🔥        🔥🔥  🔥🔥     🔥🔥 🔥🔥       🔥🔥     🔥🔥  🔥🔥   🔥🔥  🔥🔥       🔥🔥
-     🔥🔥🔥🔥🔥🔥    🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥   🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥
-     🔥🔥        🔥🔥  🔥🔥    🔥🔥  🔥🔥       🔥🔥     🔥🔥 🔥🔥     🔥🔥       🔥🔥 🔥🔥
-     🔥🔥       🔥🔥🔥🔥 🔥🔥     🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥     🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
-
-You're about to initialize a Firebase project in this directory:
-
-  /Users/pascalbrewing-work/gitlab/stuttgart-cr/stuttgart-cr
-
-[info] 
-=== Project Setup
-[info] 
-[info] First, let's associate this project directory with a Firebase project.
-[info] You can create multiple project aliases by running firebase use --add, 
-[info] but for now we'll just set up a default project.
-[info] 
-[debug] [2017-12-22T00:10:25.540Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-12-22T00:10:25.541Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- { refresh_token: '1/wRGrm6fpTBW2mow3TX0GMsyRn8mnaKnJSE_hQPMd678',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Dec 22 2017 01:10:25 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:25.700Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-22T00:10:25.763Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+[debug] [2017-12-28T13:49:40.400Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-12-28T13:49:40.400Z] > authorizing via signed-in user
+[debug] [2017-12-28T13:49:40.403Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/stuttgart-6a09a  
   
- Fri Dec 22 2017 01:10:25 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:26.814Z] <<< HTTP RESPONSE 200
-[info] 
-=== Database Setup
-[info] 
-[info] Firebase Realtime Database Rules allow you to define how your data should be
-[info] structured and when your data can be read from and written to.
-[info] 
-[debug] [2017-12-22T00:10:45.193Z] >>> HTTP REQUEST GET https://stuttgart-6a09a.firebaseio.com/.settings/rules.json  
+ Thu Dec 28 2017 14:49:40 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:41.559Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-28T13:49:41.563Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/stuttgart-6a09a/tokens  
   
- Fri Dec 22 2017 01:10:45 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:45.960Z] <<< HTTP RESPONSE 200
-[info] ✔  Database Rules for stuttgart-6a09a have been downloaded to database.rules.json.
-[info] Future modifications to database.rules.json will update Database Rules when you run
-[info] firebase deploy.
+ Thu Dec 28 2017 14:49:41 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:42.190Z] <<< HTTP RESPONSE 200
 [info] 
-=== Firestore Setup
+[info] === Deploying to 'stuttgart-6a09a'...
 [info] 
-[info] Firestore Security Rules allow you to define how and when to allow
-[info] requests. You can keep these rules in your project directory
-[info] and publish them with firebase deploy.
-[info] 
-[info] 
-[info] Firestore indexes allow you to perform complex queries while
-[info] maintaining performance that scales with the size of the result
-[info] set. You can keep index definitions in your project directory
-[info] and publish them with firebase deploy.
-[info] 
-[info] 
-=== Functions Setup
-[info] 
-[info] A functions directory will be created in your project with a Node.js
-[info] package pre-configured. Functions can be deployed with firebase deploy.
-[info] 
-[debug] [2017-12-22T00:10:51.405Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2017-12-22T00:10:51.406Z] > authorizing via signed-in user
-[debug] [2017-12-22T00:10:51.406Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
-[debug] [2017-12-22T00:10:51.406Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
- { refresh_token: '1/wRGrm6fpTBW2mow3TX0GMsyRn8mnaKnJSE_hQPMd678',
-  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
-  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
-  grant_type: 'refresh_token',
-  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
- Fri Dec 22 2017 01:10:51 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:51.487Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-22T00:10:51.566Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/stuttgart-6a09a  
+[info] i  deploying database, firestore, functions, hosting
+[info] i  functions: running predeploy script.
+[info] ✔  functions: Finished running predeploy script.
+[info] i  database: checking rules syntax...
+[debug] [2017-12-28T13:49:45.838Z] >>> HTTP REQUEST PUT https://stuttgart-6a09a.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+ 
+ Thu Dec 28 2017 14:49:45 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:46.452Z] <<< HTTP RESPONSE 200
+[info] ✔  database: rules syntax for database stuttgart-6a09a is valid
+[info] i  firestore: checking firestore.rules for compilation errors...
+[debug] [2017-12-28T13:49:46.458Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/stuttgart-6a09a:test  
+ { source: { files: [ [Object] ] } } 
+ Thu Dec 28 2017 14:49:46 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:47.182Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2017-12-28T13:49:47.184Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase experimental:functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "~5.4.2",
+    "firebase-functions": "^0.7.1"
+  },
+  "devDependencies": {
+    "typescript": "^2.5.3"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2017-12-28T13:49:47.185Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/stuttgart-6a09a?view=CONSUMER_VIEW  
   
- Fri Dec 22 2017 01:10:51 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:52.131Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-22T00:10:52.133Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/stuttgart-6a09a/tokens  
+ Thu Dec 28 2017 14:49:47 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:47.186Z] >>> HTTP REQUEST GET https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/stuttgart-6a09a?view=CONSUMER_VIEW  
   
- Fri Dec 22 2017 01:10:52 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:52.923Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-22T00:10:52.925Z] >>> HTTP REQUEST PATCH https://servicemanagement.googleapis.com/v1/services/cloudfunctions.googleapis.com/projectSettings/stuttgart-6a09a?updateMask=usageSettings  
- { usageSettings: { consumerEnableStatus: 'ENABLED' } } 
- Fri Dec 22 2017 01:10:52 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:52.927Z] >>> HTTP REQUEST PATCH https://servicemanagement.googleapis.com/v1/services/runtimeconfig.googleapis.com/projectSettings/stuttgart-6a09a?updateMask=usageSettings  
- { usageSettings: { consumerEnableStatus: 'ENABLED' } } 
- Fri Dec 22 2017 01:10:52 GMT+0100 (CET)
-[debug] [2017-12-22T00:10:54.769Z] <<< HTTP RESPONSE 200
-[debug] [2017-12-22T00:10:54.770Z] <<< HTTP RESPONSE 200
-[info] ✔  Wrote functions/package.json
-[info] ✔  Wrote functions/tsconfig.json
-[info] ✔  Wrote functions/src/index.ts
-[info] 
-=== Hosting Setup
-[info] 
-[info] Your public directory is the folder (relative to your project directory) that
-[info] will contain Hosting assets to be uploaded with firebase deploy. If you
-[info] have a build process for your assets, use your build's output directory.
-[info] 
-[debug] [2017-12-22T00:16:46.160Z] >>> HTTP REQUEST GET https://www.gstatic.com/firebasejs/releases.json  
+ Thu Dec 28 2017 14:49:47 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:48.289Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-28T13:49:48.369Z] <<< HTTP RESPONSE 200
+[info] ✔  functions: all necessary APIs are enabled
+[debug] [2017-12-28T13:49:48.371Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/stuttgart-6a09a  
   
- Fri Dec 22 2017 01:16:46 GMT+0100 (CET)
-[debug] [2017-12-22T00:16:46.286Z] <<< HTTP RESPONSE 200
+ Thu Dec 28 2017 14:49:48 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:48.371Z] >>> HTTP REQUEST GET https://apikeys.googleapis.com/v1/projects/stuttgart-6a09a/apiKeys  
+  
+ Thu Dec 28 2017 14:49:48 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:49.195Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-28T13:49:49.539Z] <<< HTTP RESPONSE 200
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2017-12-28T13:49:49.546Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/stuttgart-6a09a/rulesets  
+ { source: { files: [ [Object] ] } } 
+ Thu Dec 28 2017 14:49:49 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:49.547Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta1/projects/stuttgart-6a09a/databases/(default)/indexes  
+  
+ Thu Dec 28 2017 14:49:49 GMT+0100 (CET)
+[debug] [2017-12-28T13:49:50.327Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-28T13:49:50.393Z] <<< HTTP RESPONSE 200
+[debug] [2017-12-28T13:49:50.394Z] [rules] created ruleset projects/stuttgart-6a09a/rulesets/6d7b121d-3827-4f0b-810f-d860b8d429cf
+[info] i  functions: preparing functions directory for uploading...
+[debug] [2017-12-28T13:50:08.229Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/stuttgart-6a09a/configs  
+  
+ Thu Dec 28 2017 14:50:08 GMT+0100 (CET)
+[debug] [2017-12-28T13:50:08.488Z] <<< HTTP RESPONSE 200
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2017-12-28T13:50:10.142Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/stuttgart-6a09a/uploads/-L1SNhcZIhwiTo_fQX97?fileCount=156&message=  
+  
+ Thu Dec 28 2017 14:50:10 GMT+0100 (CET)

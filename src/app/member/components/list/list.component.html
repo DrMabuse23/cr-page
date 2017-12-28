@@ -1,23 +1,44 @@
-<mat-toolbar color="primary">
-  <span>Members Stuttgart #8CVPP8</span>
-</mat-toolbar>
-<div class="example-container mat-elevation-z8" *ngIf="dataSource">
-  <button [routerLink]="['/event', 'add']">Add</button>
+<div class="mat-elevation-z8" *ngIf="dataSource">
   <mat-table #table [dataSource]="dataSource">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name. </mat-header-cell>
-      <mat-cell *matCellDef="let element"><a mat-button color="primary" [href]="element.profileLink" target="_blank">{{element.name}}</a>  </mat-cell>
+    <ng-container matColumnDef="rank">
+      <mat-header-cell *matHeaderCellDef fxFlex="0 0 5%"> Rank </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex="0 0 5%"> {{element.rank}} </mat-cell>
     </ng-container>
-
-    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef fxFlex.gt-xs="0 0 25%"> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex.gt-xs="0 0 25%">
+        <a mat-button color="primary" [href]="element.profileLink" target="_blank">{{element.name}}</a>
+      </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="role">
-      <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.role}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef fxFlex.gt-xs="0 0 20%"> Role </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex.gt-xs="0 0 20%"> {{element.role}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="level">
+        <mat-header-cell *matHeaderCellDef fxFlex.gt-xs="0 0 10%" fxHide.xs> Level </mat-header-cell>
+        <mat-cell *matCellDef="let element" fxFlex.gt-xs="0 0 10%" fxHide.xs> {{element.expLevel}} </mat-cell>
+      </ng-container>
+    <ng-container matColumnDef="trophies">
+      <mat-header-cell *matHeaderCellDef fxFlex.gt-xs="0 0 15%"> Trophies </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxFlex.gt-xs="0 0 15%"> {{element.trophies}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="arena">
+      <mat-header-cell *matHeaderCellDef fxHide.xs fxFlex.gt-xs="0 0 15%"> Arena </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxHide.xs fxFlex.gt-xs="0 0 15%">
+        <img class="arena-img" [src]="getArenaImage(element.arena.arena)" />
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="clanChest">
+      <mat-header-cell *matHeaderCellDef fxHide.xs> Crowns </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxHide.xs>
+        {{element.clanChestCrowns}}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="donations">
+      <mat-header-cell *matHeaderCellDef fxHide.xs> Donations </mat-header-cell>
+      <mat-cell *matCellDef="let element" fxHide.xs>
+        {{element.donations}}
+      </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

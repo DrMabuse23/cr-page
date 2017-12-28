@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { CrApiModule } from '../cr-api/cr-api.module';
 import { MemberService } from './providers/member/member.service';
 
@@ -13,13 +14,20 @@ import { MemberRoutingModule } from './member-routing.module';
     CommonModule,
     MemberRoutingModule,
     MaterialModule,
-    CrApiModule
+    CrApiModule,
+    FlexLayoutModule
   ],
   declarations: [
     ListComponent
   ],
   providers: [
     MemberService
+  ],
+  entryComponents: [
+    ListComponent
+  ],
+  exports: [
+    ListComponent
   ]
 })
 export class MemberModule { }

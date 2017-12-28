@@ -24,6 +24,8 @@ export interface Arena {
 
 export interface Member {
   id?: string;
+  docPath?: string;
+  $key?: string;
   name: string;
   tag: string;
   rank: number;
@@ -41,6 +43,8 @@ export interface Member {
 
 export interface Clan {
   id?: string;
+  docPath?: string;
+  $key?: string;
   tag: string;
   name: string;
   description: string;
