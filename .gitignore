@@ -45,3 +45,4 @@ Thumbs.db
 /src/environments/core.ts
 /firebase/functions/lib/index.js
 /firebase/functions/lib/index.js.map
+/firebase/firebase-debug.log
