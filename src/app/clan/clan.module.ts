@@ -1,4 +1,4 @@
-import { MemberModule } from '../member/member.module';
+import { MemberListComponent } from './components/member-list/list.component';
 import { MaterialModule } from '../material/material.module';
 import { ClanPageComponent } from './components/clan-page/clan-page.component';
 import { CrApiModule } from '../cr-api/cr-api.module';
@@ -13,9 +13,8 @@ import { ClanRoutingModule } from './clan-routing.module';
     ClanRoutingModule,
     CrApiModule,
     MaterialModule,
-    MemberModule,
     FlexLayoutModule
   ],
-  declarations: [ClanPageComponent]
+  declarations: [ClanPageComponent, MemberListComponent]
 })
 export class ClanModule { }

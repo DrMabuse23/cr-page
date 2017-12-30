@@ -7,10 +7,6 @@ const routes: Routes = [
     loadChildren: 'app/clan/clan.module#ClanModule',
   },
   {
-    path: 'member',
-    loadChildren: 'app/member/member.module#MemberModule',
-  },
-  {
     path: 'event',
     loadChildren: 'app/fights/fights.module#FightsModule'
   },

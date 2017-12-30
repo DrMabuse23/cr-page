@@ -1,6 +1,5 @@
+import {ClanService} from '../../../cr-api/providers/clan/clan.service';
 import { Member } from '../../../cr-api/models/clan.model';
-import { MemberModel } from '../../member.mdel';
-import { MemberService } from '../../providers/member/member.service';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
@@ -11,21 +10,18 @@ import { MatTableDataSource } from '@angular/material';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnDestroy, AfterViewInit {
+export class MemberListComponent implements OnInit, OnDestroy, AfterViewInit {
   displayedColumns = ['rank', 'name', 'role', 'expLevel', 'trophies', 'arena', 'clanChestCrowns', 'donations'];
   dataSource: MatTableDataSource<Member[]>;
   memberSubcriber: Subscription;
-  constructor(private memberService: MemberService) {
-
-  }
+  constructor(private clanService: ClanService) { }
 
   ngAfterViewInit() {
   }
 
   ngOnInit() {
-    this.memberSubcriber = this.memberService.member.subscribe((collection: any) => {
+    this.memberSubcriber = this.clanService.member.subscribe((collection: any) => {
       this.dataSource = new MatTableDataSource(collection);
-      console.log(JSON.stringify(collection[25], null, 2));
     });
   }
 
