@@ -1,0 +1,19 @@
+<button mat-button [matMenuTriggerFor]="menu">signin</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="login('mail')">
+    <mat-icon [color]="'primary'"> mail </mat-icon>
+    <span> Email </span>
+  </button>
+  <button mat-menu-item (click)="login('github')">
+    <mat-icon [color]="'primary'" fontSet="fa" fontIcon="fa-github"></mat-icon>
+    <span> Github </span>
+  </button>
+  <button mat-menu-item (click)="login('google')">
+    <mat-icon [color]="'primary'" fontSet="fa" fontIcon="fa-google-plus"></mat-icon>
+    <span> Google </span>
+  </button>
+  <button mat-menu-item (click)="login('twitter')">
+    <mat-icon [color]="'primary'" fontSet="fa" fontIcon="fa-twitter"></mat-icon>
+    <span> Twitter </span>
+  </button>
+</mat-menu>

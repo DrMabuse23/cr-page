@@ -1,6 +1,6 @@
 
 export class CrApiBase {
-  private protocol = 'http://';
+  private protocol = 'https://';
   private host = 'api.cr-api.com';
   public clanId = '8CVPP8';
 

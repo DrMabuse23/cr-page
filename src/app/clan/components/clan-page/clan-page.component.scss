@@ -1,17 +1,27 @@
-.clanlogo{
-  max-height: 44px;
-  margin-right: 14px;
-}
-.icon-card{
+.icon-card {
   max-height: 35px;
 }
-.icon-card-chest{
+
+.icon-card-chest {
   max-height: 75px;
 }
+
 .mat-card-title {
   font-size: 22px;
   min-height: 75px;
 }
-.mat-card{
+
+.mat-card {
   min-height: 115px;
+}
+
+.member-card {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  .mat-card-title {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 0px;
+  }
 }

@@ -16,6 +16,8 @@ export class ClanService extends CrApiBase {
   public memberCollection: AngularFirestoreCollection<Member>;
   public clanCollection: AngularFirestoreCollection<Clan>;
   private initialImport = false;
+  public memberModeUpdate = true;
+  public clanModeUpdate = true;
   constructor(
     private httpClient: HttpClient,
     private clanImportService: ClanImportService,
@@ -25,12 +27,20 @@ export class ClanService extends CrApiBase {
     this.memberCollection = afs.collection<Member>('members', ref => ref.orderBy('rank'));
     this.clanCollection = afs.collection<Clan>('clan');
   }
-
-  get url() {
+  /**
+   * @readonly
+   * @type {string}
+   * @memberof ClanService
+   */
+  get url(): string {
     return `${this.baseUrl}/${this.clanId}`;
   }
-
-  get member() {
+  /**
+   * @readonly
+   * @type {Observable<Member[]>}
+   * @memberof ClanService
+   */
+  get member(): Observable<Member[]> {
     return this.memberCollection.valueChanges()
       .concatMap((members: Member[]) => {
         return this.memberCollection.snapshotChanges()
@@ -46,8 +56,12 @@ export class ClanService extends CrApiBase {
           });
       });
   }
-
-  get clan() {
+  /**
+   * @readonly
+   * @type {Observable<Clan>}
+   * @memberof ClanService
+   */
+  get clan(): Observable<Clan> {
     return this.clanCollection.valueChanges()
       .concatMap((clan: Clan[]) => {
         if (clan.length) {
@@ -66,19 +80,18 @@ export class ClanService extends CrApiBase {
         if (!clan.length) {
           return this.import()
             .map(() => {
-              console.log(clan);
               return clan[0];
             });
         } else {
-          console.log(clan[0]);
-          if (clan[0].$key) {
+          if (clan[0].$key && this.clanModeUpdate) {
             this.updateClan(clan[0].$key);
           }
         }
         return Observable.of(clan[0]);
       })
       .catch((err) => {
-        return this.import();
+        console.error(err);
+        return Observable.throw(err);
       });
   }
   /**
@@ -132,6 +145,34 @@ export class ClanService extends CrApiBase {
     const itemDoc = this.memberCollection.doc<Clan>(doc.$key);
     itemDoc.update(doc);
   }
+
+  updateMembers(members: Member[], data: Member[]) {
+    const canBeUpdated = members.filter((member) => {
+      const upgradeMember = data.find((_m) => _m.name === member.name);
+      if (upgradeMember) {
+        return Object.assign(member, upgradeMember);
+      }
+    });
+
+    if (canBeUpdated.length === data.length) {
+      canBeUpdated.forEach((member) => this.updateMember(member))
+      return Observable.of(canBeUpdated);
+    }
+    const leaved = members.filter((member) => data.findIndex((_m) => _m.name === member.name));
+    const newEntry = data.filter((member) => {
+      if (members.findIndex((_m) => _m.name !== member.name) === -1) {
+        return true;
+      }
+      return false;
+    });
+    return Observable.from(newEntry)
+      .map((member) => this.addMember(member))
+      .last()
+      .map(() => {
+        canBeUpdated.forEach((_member) => this.updateMember(_member));
+      });
+
+  }
   /**
    * initial import member
    * @param {Member[]} members
@@ -151,10 +192,14 @@ export class ClanService extends CrApiBase {
   updateClan(id) {
     this.clanImportService.import()
       .debounceTime(180000)
+      // .concatMap((clan) => {
+      //   return this.member.concatMap((_m) => <any>this.updateMembers(_m, clan.members))
+      //     .map(() => clan);
+      // })
       .subscribe((clan) => {
-        console.log(clan, id);
+        // console.log(clan, id);
         const itemDoc = this.clanCollection.doc<Clan>(id);
-        delete clan.members;
+        // delete clan.members;
         itemDoc.update(clan);
       });
   }

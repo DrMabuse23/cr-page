@@ -1,22 +1,14 @@
-<mat-toolbar color="primary" *ngIf="clan">
-  <img class="clanlogo" [src]="clan.badge.image" />
-  <span>{{clan.name}}</span>
-</mat-toolbar>
-<div fxLayout='column' class="zero" fxLayoutGap="10px">
+<div fxLayout='column' class="zero" fxLayoutGap="24px">
   <mat-card *ngIf="clan">
     <mat-card-content>
-      <mat-card-title>
-        {{clan.name}}
-      </mat-card-title>
       <p>
         {{clan.description}}
       </p>
-      <!-- <pre>{{clan|json}}</pre> -->
     </mat-card-content>
   </mat-card>
-  <div fxFlex="33" fxLayout="row" fxLayout.xs="column" fxLayout.md="row" class="two" fxLayoutGap="10px">
+  <div fxFlex="33" fxLayout="row" fxLayout.xs="column" fxLayout.md="row" class="two" fxLayoutGap="24px">
     <div fxFlex="100">
-      <mat-card class="gradient" *ngIf="clan">
+      <mat-card *ngIf="clan">
         <mat-card-content>
           <mat-card-title>
             <div fxFlex="50" class="two_one">{{clan.score}}</div>
@@ -31,7 +23,7 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card class="gradient" *ngIf="clan">
+      <mat-card *ngIf="clan">
         <mat-card-content>
           <mat-card-title>
             <div fxFlex="50" class="two_one">{{clan.requiredScore}}</div>
@@ -46,7 +38,7 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card class="gradient" *ngIf="clan">
+      <mat-card *ngIf="clan">
         <mat-card-content>
           <mat-card-title fxFlexAlign="center">
             <div fxFlex="50" class="two_one">{{clan.donations}}</div>
@@ -61,9 +53,9 @@
       </mat-card>
     </div>
   </div>
-  <div fxFlex="33" fxLayout="row" fxLayout.xs="column" fxLayout.md="row" class="two" fxLayoutGap="10px" fxHide.xs>
+  <div fxFlex="33" fxLayout="row" fxLayout.xs="column" fxLayout.md="row" class="two" fxLayoutGap="24px" fxHide.xs>
     <div fxFlex="100">
-      <mat-card class="gradient" *ngIf="clan">
+      <mat-card *ngIf="clan">
         <mat-card-content>
           <mat-card-title>
             <div fxFlex="50" class="two_one">{{clan.memberCount}} / 50</div>
@@ -78,7 +70,7 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card class="gradient" *ngIf="clan">
+      <mat-card *ngIf="clan">
         <mat-card-content>
           <mat-card-title fxFlexAlign="center">
             <div fxFlex="50" class="two_one">{{clan.location.name}}</div>
@@ -90,7 +82,7 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card class="gradient" *ngIf="clan">
+      <mat-card *ngIf="clan">
         <mat-card-content>
           <mat-card-title>
             <div fxFlex="50" class="two_one">{{clan.clanChest.status}}</div>
@@ -105,10 +97,10 @@
       </mat-card>
     </div>
   </div>
-  <mat-card *ngIf="clan" class="gradient">
+  <mat-card *ngIf="clan" class="member-card">
     <mat-card-content>
-      <mat-card-title>
-        Member
+      <mat-card-title color="primary">
+        Team
       </mat-card-title>
       <app-member-list></app-member-list>
     </mat-card-content>

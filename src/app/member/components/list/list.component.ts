@@ -3,7 +3,7 @@ import { MemberModel } from '../../member.mdel';
 import { MemberService } from '../../providers/member/member.service';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({
@@ -11,12 +11,15 @@ import { MatTableDataSource } from '@angular/material';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit, OnDestroy {
-  displayedColumns = ['rank', 'name', 'role', 'level', 'trophies', 'arena', 'clanChest', 'donations'];
+export class ListComponent implements OnInit, OnDestroy, AfterViewInit {
+  displayedColumns = ['rank', 'name', 'role', 'expLevel', 'trophies', 'arena', 'clanChestCrowns', 'donations'];
   dataSource: MatTableDataSource<Member[]>;
   memberSubcriber: Subscription;
   constructor(private memberService: MemberService) {
 
+  }
+
+  ngAfterViewInit() {
   }
 
   ngOnInit() {
@@ -48,6 +51,12 @@ export class ListComponent implements OnInit, OnDestroy {
       return `assets/ui/arenas/ui_icon_${mapper[name]}.png`;
     }
     return `assets/ui/leagues/${name}.png`;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
   ngOnDestroy() {
