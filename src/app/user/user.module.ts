@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
+import { UserService } from './providers/user/user.service';
+import { AuthGuard } from './providers/auth/auth.guard';
 
 @NgModule({
   imports: [
@@ -11,6 +13,7 @@ import { UserRoutingModule } from './user-routing.module';
     SharedModule
   ],
   declarations: [],
-  exports: []
+  exports: [],
+  providers: [UserService, AuthGuard]
 })
 export class UserModule { }

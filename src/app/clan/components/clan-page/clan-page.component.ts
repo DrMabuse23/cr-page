@@ -18,7 +18,7 @@ export class ClanPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.clanSubscription = this.clanService.clan.subscribe((clan) => {
-      console.log(clan);
+      // console.log(clan);
       this.clan = clan;
     });
   }

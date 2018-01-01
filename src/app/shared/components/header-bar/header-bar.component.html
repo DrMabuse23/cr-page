@@ -1,9 +1,9 @@
-<mat-toolbar color="primary" *ngIf="clan">
+<mat-toolbar color="primary" >
   <div fxFlex="50%" fxLayoutAlign="start">
-    <img class="clanlogo" [src]="clan.badge.image" />
-    <span>{{clan.name}}</span>
+    <img  class="clanlogo" *ngIf="clan" [src]="clan.badge.image" />
+    <span *ngIf="clan">{{clan.name}}</span>
   </div>
   <div fxFlex="50%" fxLayoutAlign="end">
-    <app-login></app-login>
+    <app-login *ngIf="clan"></app-login>
   </div>
 </mat-toolbar>

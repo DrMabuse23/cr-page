@@ -68,9 +68,14 @@ export class ClanService extends CrApiBase {
               this._clan = clan[0];
               return clan[0];
             });
-        } else {
+        } else if (!this.initialImport) {
+          this.initialImport = true;
           if (clan[0].$key && this.clanModeUpdate) {
-            this.updateClan(clan[0].$key);
+            return this.updateClan(clan[0].$key)
+              .map(() => {
+                this._clan = clan[0];
+                return clan[0];
+              });
           }
         }
         this._clan = clan[0];
@@ -113,10 +118,8 @@ export class ClanService extends CrApiBase {
    * @memberof ClanService
    */
   updateClan(id) {
-    this.clanImportService.import()
-      .debounceTime(180000)
-      .subscribe((clan) => {
-        // console.log(clan, id);
+    return this.clanImportService.import()
+      .map((clan) => {
         const itemDoc = this.clanCollection.doc<Clan>(id);
         itemDoc.update(clan);
       });

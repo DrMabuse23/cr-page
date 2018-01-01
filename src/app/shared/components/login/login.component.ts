@@ -1,7 +1,5 @@
-import { CurrentUser } from '../../../user/models/currentuser.model';
-import { Observable } from 'rxjs/Observable';
+import { UserService } from '../../../user/providers/user/user.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 @Component({
@@ -11,10 +9,11 @@ import * as firebase from 'firebase/app';
 })
 export class LoginComponent implements OnInit {
   public user: firebase.User;
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
-    this.isUser();
+    this.userService.isUser();
+    this.user = this.userService.user;
   }
 
   login(provider) {
@@ -36,22 +35,12 @@ export class LoginComponent implements OnInit {
         break;
     }
 
-    this.afAuth.auth.signInWithPopup(promise).then((res) => {
-      this.isUser();
+    this.userService.afAuth.auth.signInWithPopup(promise).then((res) => {
+      this.userService.isUser();
     });
   }
 
   logout() {
-    this.afAuth.auth.signOut().then(() => this.isUser());
-  }
-
-  isUser() {
-    this.user = this.afAuth.auth.currentUser;
-    if (this.user) {
-      // this.User is signed in.
-      console.log('user', this.user);
-    } else {
-      // No user is signed in.
-    }
+    this.userService.afAuth.auth.signOut().then(() => this.isUser());
   }
 }
