@@ -1,11 +1,11 @@
-import {MatIconRegistry} from '@angular/material';
+import {ClanModule} from './clan/clan.module';
+import { MatIconRegistry } from '@angular/material';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/shared.module';
 import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 
 import { MaterialModule } from './material/material.module';
-import { CoreModule } from './core/core.module';
 import { FightsModule } from './fights/fights.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -26,16 +26,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    CoreModule,
-    FightsModule,
-    AppRoutingModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    SharedModule,
+    FightsModule,
     UserModule,
-    SharedModule
+    ClanModule,
+    AppRoutingModule
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

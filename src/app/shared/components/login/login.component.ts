@@ -1,46 +1,29 @@
-import { UserService } from '../../../user/providers/user/user.service';
-import { Component, OnInit } from '@angular/core';
+import {Output, Component, Input, EventEmitter } from '@angular/core';
 import * as firebase from 'firebase/app';
 
+import { UserService } from '../../../user/providers/user/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  public user: firebase.User;
+export class LoginComponent {
+  private _user: firebase.User;
   constructor(public userService: UserService) { }
+  @Output() action = new EventEmitter();
+  @Input() set user(user) {
+    this._user = user;
+  }
 
-  ngOnInit() {
-    this.userService.isUser();
-    this.user = this.userService.user;
+  get user() {
+    return this._user;
   }
 
   login(provider) {
-    let promise;
-    switch (provider) {
-      case 'google':
-        promise = new firebase.auth.GoogleAuthProvider();
-        break;
-      case 'twitter':
-        promise = new firebase.auth.TwitterAuthProvider();
-        break;
-      case 'facebook':
-        promise = new firebase.auth.FacebookAuthProvider();
-        break;
-      case 'github':
-        promise = new firebase.auth.GithubAuthProvider();
-        break;
-      default:
-        break;
-    }
-
-    this.userService.afAuth.auth.signInWithPopup(promise).then((res) => {
-      this.userService.isUser();
-    });
+    this.action.emit(provider);
   }
 
   logout() {
-    this.userService.afAuth.auth.signOut().then(() => this.isUser());
+    this.action.emit('logout');
   }
 }

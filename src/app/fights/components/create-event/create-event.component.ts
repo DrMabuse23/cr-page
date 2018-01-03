@@ -21,6 +21,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('test');
   }
 
   submit() {

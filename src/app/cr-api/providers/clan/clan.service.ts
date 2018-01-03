@@ -1,5 +1,4 @@
 import { DocumentChangeAction } from 'angularfire2/firestore';
-import { Observer } from 'rxjs/Observer';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -24,30 +23,7 @@ export class ClanService extends CrApiBase {
   ) {
     super();
     this.clanCollection = afs.collection<Clan>('clan');
-  }
-  /**
-   * @readonly
-   * @type {string}
-   * @memberof ClanService
-   */
-  get url(): string {
-    return `${this.baseUrl}/${this.clanId}`;
-  }
-  /**
-   * @readonly
-   * @type {Observable<Member[]>}
-   * @memberof ClanService
-   */
-  get member(): Observable<Member[]> {
-    return Observable.of(this._clan.members);
-  }
-  /**
-   * @readonly
-   * @type {Observable<Clan>}
-   * @memberof ClanService
-   */
-  get clan(): Observable<Clan> {
-    return this.clanCollection.valueChanges()
+    this.clanCollection.valueChanges()
       .concatMap((clan: Clan[]) => {
         if (clan.length) {
           return this.clanCollection.snapshotChanges()
@@ -71,10 +47,15 @@ export class ClanService extends CrApiBase {
         } else if (!this.initialImport) {
           this.initialImport = true;
           if (clan[0].$key && this.clanModeUpdate) {
-            return this.updateClan(clan[0].$key)
+            Observable.interval(180000)
+              .concatMap(() => this.updateClan(clan[0].$key))
               .map(() => {
                 this._clan = clan[0];
                 return clan[0];
+              })
+              .subscribe((_clan) => {
+                console.log(_clan, 'updated');
+                console.log(new Date());
               });
           }
         }
@@ -84,7 +65,32 @@ export class ClanService extends CrApiBase {
       .catch((err) => {
         console.error(err);
         return Observable.throw(err);
-      });
+      })
+      .subscribe((thatclan) => this._clan = thatclan);
+  }
+  /**
+   * @readonly
+   * @type {string}
+   * @memberof ClanService
+   */
+  get url(): string {
+    return `${this.baseUrl}/${this.clanId}`;
+  }
+  /**
+   * @readonly
+   * @type {Observable<Member[]>}
+   * @memberof ClanService
+   */
+  get member(): Observable<Member[]> {
+    return Observable.of(this._clan.members);
+  }
+  /**
+   * @readonly
+   * @type {Observable<Clan>}
+   * @memberof ClanService
+   */
+  get clan(): Clan {
+    return this._clan;
   }
   /**
    * add clan

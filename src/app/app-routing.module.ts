@@ -3,14 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'clan',
-    loadChildren: 'app/clan/clan.module#ClanModule',
-  },
-  {
-    path: 'event',
-    loadChildren: 'app/fights/fights.module#FightsModule'
-  },
-  {
     path: '',
     pathMatch: 'full',
     redirectTo: '/clan'
@@ -19,7 +11,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: Boolean(history.pushState) === false})],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: Boolean(history.pushState) === false,
+    enableTracing: true
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

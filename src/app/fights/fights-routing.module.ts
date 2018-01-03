@@ -1,3 +1,4 @@
+import { AuthGuard } from '../user/providers/auth/auth.guard';
 import { FightEventResolverService } from './providers/fight-event-resolver/fight-event-resolver.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,17 +9,19 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 
 const routes: Routes = [
   {
-    path: 'events',
+    path: 'event',
     component: EventsComponent,
-    pathMatch: 'full'
+    canActivate: [AuthGuard]
   },
   {
-    path: 'add',
-    component: CreateEventComponent
+    path: 'event/add',
+    component: CreateEventComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path: 'view/:id',
-    component: CreateEventFightComponent
+    path: 'event/:id',
+    component: CreateEventFightComponent,
+    canActivate: [AuthGuard]
     // resolve: {
     //   event: FightEventResolverService
     // }

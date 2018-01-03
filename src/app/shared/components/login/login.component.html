@@ -1,5 +1,8 @@
 <button mat-button *ngIf="!user" [matMenuTriggerFor]="menu">signin</button>
-<button (click)="logout()" mat-button *ngIf="user">{{user.displayName}}<img class="user-image" [src]="user.photoURL" /></button>
+<button (click)="logout()" mat-button *ngIf="user">
+  <span fxHide.lt-md>{{user.displayName}}</span>
+  <img class="user-image" [src]="user.photoURL" />
+</button>
 
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="login('mail')">

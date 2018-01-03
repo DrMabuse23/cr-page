@@ -1,4 +1,17 @@
-.clanlogo{
+.clanlogo {
   max-height: 44px;
   margin-right: 14px;
+}
+.right {
+  display: flex;
+  height: 64px;
+  justify-content: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
 }

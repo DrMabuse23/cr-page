@@ -1,17 +1,17 @@
 <div fxLayout='column' class="zero" fxLayoutGap="24px">
-  <mat-card *ngIf="clan">
+  <mat-card *ngIf="clanService.clan">
     <mat-card-content>
       <p>
-        {{clan.description}}
+        {{clanService.clan.description}}
       </p>
     </mat-card-content>
   </mat-card>
   <div fxFlex="33" fxLayout="row" fxLayout.xs="column" fxLayout.md="row" class="two" fxLayoutGap="24px">
     <div fxFlex="100">
-      <mat-card *ngIf="clan">
+      <mat-card *ngIf="clanService.clan">
         <mat-card-content>
           <mat-card-title>
-            <div fxFlex="50" class="two_one">{{clan.score}}</div>
+            <div fxFlex="50" class="two_one">{{clanService.clan.score}}</div>
             <div fxFlex="50" class="two_one" fxLayoutAlign="end">
               <img src="assets/ui/symbols/trophy-ribbon.png" class="icon-card" />
             </div>
@@ -23,10 +23,10 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card *ngIf="clan">
+      <mat-card *ngIf="clanService.clan">
         <mat-card-content>
           <mat-card-title>
-            <div fxFlex="50" class="two_one">{{clan.requiredScore}}</div>
+            <div fxFlex="50" class="two_one">{{clanService.clan.requiredScore}}</div>
             <div fxFlex="50" class="two_one" fxLayoutAlign="end">
               <img src="assets/ui/symbols/trophy.png" class="icon-card" />
             </div>
@@ -38,10 +38,10 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card *ngIf="clan">
+      <mat-card *ngIf="clanService.clan">
         <mat-card-content>
           <mat-card-title fxFlexAlign="center">
-            <div fxFlex="50" class="two_one">{{clan.donations}}</div>
+            <div fxFlex="50" class="two_one">{{clanService.clan.donations}}</div>
             <div fxFlex="50" class="two_one" fxLayoutAlign="end">
               <img src="assets/ui/symbols/cards.png" class="icon-card" />
             </div>
@@ -55,10 +55,10 @@
   </div>
   <div fxFlex="33" fxLayout="row" fxLayout.xs="column" fxLayout.md="row" class="two" fxLayoutGap="24px" fxHide.xs>
     <div fxFlex="100">
-      <mat-card *ngIf="clan">
+      <mat-card *ngIf="clanService.clan">
         <mat-card-content>
           <mat-card-title>
-            <div fxFlex="50" class="two_one">{{clan.memberCount}} / 50</div>
+            <div fxFlex="50" class="two_one">{{clanService.clan.memberCount}} / 50</div>
             <div fxFlex="50" class="two_one" fxLayoutAlign="end">
               <img src="assets/ui/symbols/social.png" class="icon-card" />
             </div>
@@ -70,10 +70,10 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card *ngIf="clan">
+      <mat-card *ngIf="clanService.clan">
         <mat-card-content>
           <mat-card-title fxFlexAlign="center">
-            <div fxFlex="50" class="two_one">{{clan.location.name}}</div>
+            <div fxFlex="50" class="two_one">{{clanService.clan.location.name}}</div>
           </mat-card-title>
           <mat-card-subtitle>
             {{'LOCATION'}}
@@ -82,10 +82,10 @@
       </mat-card>
     </div>
     <div fxFlex="100">
-      <mat-card *ngIf="clan">
+      <mat-card *ngIf="clanService.clan">
         <mat-card-content>
           <mat-card-title>
-            <div fxFlex="50" class="two_one">{{clan.clanChest.status}}</div>
+            <div fxFlex="50" class="two_one">{{clanService.clan.clanChest.status}}</div>
             <div fxFlex="50" class="two_one" fxLayoutAlign="end">
               <img src="assets/ui/chests/clan.png" class="icon-card-chest" />
             </div>
@@ -97,7 +97,7 @@
       </mat-card>
     </div>
   </div>
-  <mat-card *ngIf="clan" class="member-card">
+  <mat-card *ngIf="clanService.clan" class="member-card">
     <mat-card-content>
       <mat-card-title color="primary">
         Team

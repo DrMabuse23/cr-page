@@ -13,9 +13,9 @@ import { FightEventResolverService } from './providers/fight-event-resolver/figh
 @NgModule({
   imports: [
     CommonModule,
-    FightsRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
+    FightsRoutingModule
   ],
   declarations: [CreateEventComponent, EventsComponent, CreateEventFightComponent],
   providers: [FightEventService, FightEventResolverService]

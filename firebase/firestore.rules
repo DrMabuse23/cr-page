@@ -6,5 +6,8 @@ service cloud.firestore {
     match /clan/{uid=**} {
       allow write, read;
     }
+    match /events/{uid=**} {
+      allow write, read: if request.auth != null;
+    }
   }
 }

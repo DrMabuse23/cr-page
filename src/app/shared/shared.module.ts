@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { UserModule } from '../user/user.module';
@@ -16,7 +17,8 @@ export const COMPONENTS = [
     CommonModule,
     MaterialModule,
     CrApiModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule
   ],
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS]
