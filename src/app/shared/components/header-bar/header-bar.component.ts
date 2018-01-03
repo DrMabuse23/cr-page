@@ -10,7 +10,6 @@ import { UserService } from '../../../user/providers/user/user.service';
   styleUrls: ['./header-bar.component.scss']
 })
 export class HeaderBarComponent {
-  private clanSubscriber: Subscription;
   constructor(
     public clanService: ClanService,
     public userService: UserService
