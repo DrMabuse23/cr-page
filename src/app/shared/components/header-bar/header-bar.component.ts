@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase/app';
 
 import { ClanService } from '../../../cr-api/providers/clan/clan.service';
@@ -9,11 +9,15 @@ import { UserService } from '../../../user/providers/user/user.service';
   templateUrl: './header-bar.component.html',
   styleUrls: ['./header-bar.component.scss']
 })
-export class HeaderBarComponent {
+export class HeaderBarComponent implements OnInit {
   constructor(
     public clanService: ClanService,
     public userService: UserService
   ) { }
+
+  ngOnInit() {
+    setTimeout(() => this.userService.isUser(), 2000);
+  }
 
   login(provider) {
     let promise;

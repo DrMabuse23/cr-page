@@ -1,5 +1,3 @@
-import {FightEventService} from '../fight-event/fight-event.service';
-import { FightingEvent } from '../../event.model';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import {
@@ -8,6 +6,9 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 
+import { FightEventService } from '../fight-event/fight-event.service';
+import { Tournament } from '../../models/event.model';
+
 @Injectable()
 export class FightEventResolverService implements Resolve<any> {
 
@@ -15,8 +16,8 @@ export class FightEventResolverService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
 
     return this.fgs.byId(route.params.id)
-    .map((data) => {
-      return Observable.of(data);
-    });
+      .map((data) => {
+        return Observable.of(data);
+      });
   }
 }

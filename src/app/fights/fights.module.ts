@@ -1,3 +1,4 @@
+import { CrApiModule } from '../cr-api/cr-api.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { NgModule } from '@angular/core';
@@ -9,15 +10,17 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 import { EventsComponent } from './components/events/events.component';
 import { CreateEventFightComponent } from './components/create-event-fight/create-event-fight.component';
 import { FightEventResolverService } from './providers/fight-event-resolver/fight-event-resolver.service';
+import { ChooseMemberComponent } from './components/choose-member/choose-member.component';
 
 @NgModule({
   imports: [
     CommonModule,
+    CrApiModule,
     MaterialModule,
     ReactiveFormsModule,
     FightsRoutingModule
   ],
-  declarations: [CreateEventComponent, EventsComponent, CreateEventFightComponent],
+  declarations: [CreateEventComponent, EventsComponent, CreateEventFightComponent, ChooseMemberComponent],
   providers: [FightEventService, FightEventResolverService]
 })
 export class FightsModule { }

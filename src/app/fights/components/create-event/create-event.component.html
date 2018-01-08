@@ -1,33 +1,71 @@
-<mat-card>
-  <mat-card-content>
-    <mat-card-title>
-      Create Event
-    </mat-card-title>
-    <form [formGroup]="form" (submit)="submit()">
-      <mat-form-field>
-        <input matInput placeholder="Name" formControlName="name">
-      </mat-form-field>
-      <mat-form-field>
-        <textarea matInput placeholder="Description" formControlName="description"></textarea>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker" formControlName="from" placeholder="Start">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [matDatepicker]="picker2" formControlName="to" placeholder="End">
-        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-        <mat-datepicker #picker2></mat-datepicker>
-      </mat-form-field>
+<mat-horizontal-stepper linear="true">
+  <mat-step [stepControl]="form">
+    <ng-template matStepLabel>Create Tournament</ng-template>
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="form" (submit)="submit()">
+          <div fxLayout="row" class="hint" fxLayoutAlign="space-around">
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+            <mat-form-field fxFlex>
+              <mat-select formControlName="tournamentType" placeholder="Tournament type">
+                <!-- <mat-option value="single-ko-system">
+                  {{ 'single-ko-system' }}(1win)
+                </mat-option> -->
+                <mat-option value="double-ko-system">
+                  {{ 'double-ko-system' }} (2wins)
+                </mat-option>
+                <!-- <mat-option value="tournament">
+                  {{ 'tournament' }}(not implemented at moment)
+                </mat-option> -->
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" class="hint" fxLayoutAlign="space-around">
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="picker" formControlName="from" placeholder="First Round Start">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="picker2" formControlName="to" placeholder="First Round End">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <mat-form-field>
+            <textarea matInput placeholder="Description" [style.minHeight.px]="100" formControlName="description"></textarea>
+          </mat-form-field>
+        </form>
+        <!-- //  -->
+        <mat-card-actions>
+          <button mat-raised-button color="accent" (click)="form.reset()">Reset</button>
+          <button mat-button matStepperNext [disabled]="!form.valid">Next</button>
+          <!-- <button mat-raised-button color="primary" (click)="submit()" type="submit" [disabled]="!form.valid">Submit</button> -->
+        </mat-card-actions>
+        <div class="animated badge-form" [ngClass]="{bounceInUp: emoteShow, bounceOutDown: !emoteShow}">
+          <img [src]="emote" />
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Add Players</ng-template>
+      <app-choose-member (action)="setMembers($event)" *ngIf="form.valid"></app-choose-member>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
     </form>
-    <!-- //  -->
-    <mat-card-actions>
-      <button mat-raised-button color="accent" (click)="form.reset()">Reset</button>
-      <button mat-raised-button color="primary" (click)="submit()" type="submit" [disabled]="!form.valid">Submit</button>
-    </mat-card-actions>
-    <!-- {{form.value|json}}
-    {{form.errors|json}}
-    {{form.valid}} -->
-  </mat-card-content>
-</mat-card>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

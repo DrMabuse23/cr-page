@@ -10,22 +10,17 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 const routes: Routes = [
   {
     path: 'event',
-    component: EventsComponent,
-    canActivate: [AuthGuard]
+    canActivateChild: [AuthGuard],
+    component: EventsComponent
   },
   {
     path: 'event/add',
     component: CreateEventComponent,
-    canActivate: [AuthGuard]
   },
   {
     path: 'event/:id',
     component: CreateEventFightComponent,
-    canActivate: [AuthGuard]
-    // resolve: {
-    //   event: FightEventResolverService
-    // }
-  }
+  },
 ];
 
 @NgModule({

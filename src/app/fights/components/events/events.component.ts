@@ -1,4 +1,4 @@
-import { FightingEvent } from '../../event.model';
+import { Tournament } from '../../models/event.model';
 import { FightEventService } from '../../providers/fight-event/fight-event.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -12,8 +12,8 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit, OnDestroy {
-  displayedColumns = ['name', 'from', 'to', 'id'];
-  dataSource: MatTableDataSource<FightingEvent>;
+  displayedColumns = ['name', 'id'];
+  dataSource: MatTableDataSource<Tournament>;
   memberSubcriber: Subscription;
   constructor(private eventService: FightEventService) {
 

@@ -24,3 +24,19 @@ form > * {
 form .mat-radio-button {
   margin: 0 5px;
 }
+
+.badge-form{
+  position: absolute;
+  bottom: 45px;
+  right: 0;
+  img{
+    height: 75px;
+  }
+}
+
+.hint {
+  width: 100%;
+  mat-form-field {
+    min-width: 49%;
+  }
+}

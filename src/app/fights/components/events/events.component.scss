@@ -1,4 +1,15 @@
-.actions-header, .action-row{
+.actions-header {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  padding: 10px 5px;
+}
+
+.action-row{
   display: flex;
   justify-content: flex-end;
   align-content: flex-end;
